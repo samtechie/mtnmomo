@@ -1,4 +1,4 @@
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from momoapi.models import MomoRequest
 from mtnmomo.collection import Collection
