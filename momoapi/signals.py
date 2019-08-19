@@ -2,6 +2,8 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from momoapi.models import MomoRequest
 from mtnmomo.collection import Collection
+from django.conf import settings
+
 
 client = Collection({
     "COLLECTION_USER_ID": settings.COLLECTION_USER_ID,
@@ -10,7 +12,7 @@ client = Collection({
 })
 
 
-@receiver(signals.pre_save, sender=MomoRequest)
+@receiver(pre_save, sender=MomoRequest)
 def create_request(sender, instance, created, **kwargs):
     request = client.requestToPay(
            mobile="256772123456", amount="600", external_id="123456789", payee_note="dd", payer_message="dd", currency="EUR")
