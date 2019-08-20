@@ -15,5 +15,5 @@ client = Collection({
 @receiver(pre_save, sender=MomoRequest)
 def create_request(sender, instance, **kwargs):
     request = client.requestToPay(
-           mobile="256772123456", amount="600", external_id="123456789", payee_note="dd", payer_message="dd", currency="EUR")
-    return request
+           mobile="256775141771", amount="600", external_id="123456789", payee_note="dd", payer_message="dd", currency="EUR")
+    return client.getTransactionStatus(request["transaction_ref"])
